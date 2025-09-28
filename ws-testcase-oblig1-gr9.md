@@ -34,7 +34,7 @@ unnecessary API calls.
 
 - Total number of requests made to the JSON data file over time.
 - Total bytes downloaded from that file over time.
-- JSON payload size is reduced by removing unused fields in the fixed version.
+- JSON payload size is reduced by removing unused fields in the fixed  version.
 - Polling does not occur in the fixed version.
 - The fixed version avoids repeatedly fetching identical data.
 
@@ -94,9 +94,6 @@ npx lighthouse "http://localhost:8000/fixed/index.html" \
 `evidence\localhost_2025-09-28_14-04-48.report.html`,
 `evidence\lhr-broken.report.json`,
 `evidence\lhr-fixed.report.json`,
-
-when we use the broken version we get an extra 385 bytes of unused json, which in the broken version will load that each second, for each user of our imagined application.
-so if we imagine there are 1000 users and the application for 1 minute we get 385 * 1000 * 60 which accumulates to 23MB each minute compared to the fixed version that will only use 801KB total for 1000 users. making it far more efficient than the broken version.
 
 ## 9) Automation hints (optional)
 - small snippet / instructions (if you automated checks)
