@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Overview</title>
+    <link rel="stylesheet" href="../style.css">
+    <script type="module" defer>    
+        import { createAccessTracker } from '../proxy.js';
+
+        async function loadData() {
+            const response = await fetch("./info.json");
+            const data = createAccessTracker(await response.json());
+
+            document.getElementById("username").innerHTML = data.username;
+            document.getElementById("about").innerHTML = data.about;
+            document.getElementById("tlf").innerHTML = data.tlf;
+
+            const projects = document.getElementById("projects");
+            projects.innerHTML = "";
+            data.projects.forEach(project => {
+                projects.innerHTML += `
+                    <div class="project-card">
+                        <p class="project-name">${project.name}</p>
+                        <p class="project-desc">${project.description}</p>
+                        <span class="project-status">${project.status}</span>
+                    </div>
+                `;
+            });
+
+            data.logUnusedFields();
+        }
+
+        loadData();
+        setInterval(loadData, 1000);
+    </script>
+</head>
+<body>
+    <p id="username"></p>
+    <p id="about"></p>
+    <p id="tlf"></p>
+    <div id="projects"></div>
+</body>
+</html>
