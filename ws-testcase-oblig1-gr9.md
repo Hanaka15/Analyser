@@ -99,7 +99,7 @@ npx lighthouse "http://localhost:8000/fixed/index.html" \
 - small snippet / instructions (if you automated checks)
 
 ## 10) Assumptions & notes
-- Both versions were tested on the same browser, computer, and network.
+- Both versions were tested on the same browser, computer, and network. (Ryzen 3900x, 32GB Ram)
 - Cache was cleared before each test.
 - Number of requests and total download size are used as indicators of energy use.
 - Measurements were taken with Chrome DevTools and Lighthouse.
